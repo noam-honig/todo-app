@@ -4,7 +4,7 @@ import { Task } from "./shared/Task";
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([
-    { id: 'a', title: "Setup", completed: false },
+    { id: 'a', title: "Setup", completed: true },
     { id: 'b', title: "Entities", completed: false },
     { id: 'c', title: "Paging, Sorting and Filtering", completed: false },
     { id: 'd', title: "CRUD Operations", completed: false },
@@ -20,7 +20,8 @@ function App() {
 
   const createNewTask = async () => {
     if (newTaskTitle) {
-      setTasks([...tasks, { title: newTaskTitle, completed: false, id: tasks.length.toString() }]);
+      const newTask = { title: newTaskTitle, completed: false, id: tasks.length.toString() };
+      setTasks([...tasks, newTask]);
       setNewTaskTitle('');
     }
   }
@@ -56,7 +57,8 @@ function App() {
               .map(task => {
                 if (!editingTask || task.id != editingTask.id) {
                   const setCompleted = async (completed: boolean) => {
-                    setTasks(tasks.map(t => t === task ? { ...task, completed } : t));
+                    const updatedTask = { ...task, completed };
+                    setTasks(tasks.map(t => t === task ? updatedTask : t));
                   }
                   const deleteTask = async () => {
                     setTasks(tasks.filter(t => t !== task));
