@@ -4,7 +4,7 @@ import { Task } from "./shared/Task";
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([
-    { id: 'a', title: "Setup", completed: true },
+    { id: 'a', title: "Setup", completed: false },
     { id: 'b', title: "Entities", completed: false },
     { id: 'c', title: "Paging, Sorting and Filtering", completed: false },
     { id: 'd', title: "CRUD Operations", completed: false },
