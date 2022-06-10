@@ -26,4 +26,4 @@
    npm i compression helmet heroku-ssl-redirect
    npm i @types/compression --save-dev
    ```
-   See [Prepare for Production](https://remult.dev/tutorials/react/deployment.html#prepare-for-production)
+   See [Prepare for Production](https://remult.dev/tutorials/vue/deployment.html#prepare-for-production)

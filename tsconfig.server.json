@@ -1,9 +1,13 @@
 {
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-       "module": "commonjs",
-       "emitDecoratorMetadata": true,
-       "esModuleInterop": true
-    }
- }
- 
+   "extends": "./tsconfig.json",
+   "compilerOptions": {
+      "module": "commonjs",
+      "emitDecoratorMetadata": true,
+      "esModuleInterop": true,
+      "preserveValueImports": false,
+      "outDir": "dist"
+   },
+   "include": [
+      "src/server/index.ts"
+   ]
+}
