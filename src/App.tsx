@@ -54,39 +54,42 @@ function App() {
           <ul className="todo-list">
             {tasks.filter(task => !hideCompleted || !task.completed)
               .map(task => {
+                if (task.id === editingTask?.id) {
+                  const titleChange = (title: string) => {
+                    setEditingTask({ ...editingTask, title });
 
-                const titleChange = (title: string) => {
-                  setEditingTask({ ...editingTask!, title });
-
-                };
-                const saveTask = async () => {
-                  setTasks(tasks.map(t => t === task ? editingTask! : t));
-                  setEditingTask(undefined);
-                };
-
-                const setCompleted = async (completed: boolean) => {
-                  setTasks(tasks.map(t => t === task ? { ...task, completed } : t));
+                  };
+                  const saveTask = async () => {
+                    setTasks(tasks.map(t => t === task ? editingTask! : t));
+                    setEditingTask(undefined);
+                  };
+                  return <li key={task.id} className="editing">
+                    <input className="edit"
+                      value={editingTask.title}
+                      onBlur={saveTask}
+                      onChange={e => titleChange(e.target.value)} />
+                  </li>
                 }
+                else {
 
+                  const setCompleted = async (completed: boolean) => {
+                    setTasks(tasks.map(t => t === task ? { ...task, completed } : t));
+                  }
+                  const deleteTask = async () => {
+                    setTasks(tasks.filter(t => t !== task));
+                  };
 
-                const deleteTask = async () => {
-                  setTasks(tasks.filter(t => t !== task));
-                };
-
-                return <li key={task.id} className={task.id === editingTask?.id ? 'editing' : task.completed ? 'completed' : ''}>
-                  <div className="view">
-                    <input className="toggle" type="checkbox"
-                      checked={task.completed}
-                      onChange={e => setCompleted(e.target.checked)}
-                    />
-                    <label onDoubleClick={() => setEditingTask(task)}>{task.title}</label>
-                    <button className="destroy" onClick={deleteTask}></button>
-                  </div>
-                  <input className="edit"
-                    value={editingTask?.title || ''}
-                    onBlur={saveTask}
-                    onChange={e => titleChange(e.target.value)} />
-                </li>
+                  return <li key={task.id} className={task.completed ? 'completed' : ''}>
+                    <div className="view">
+                      <input className="toggle" type="checkbox"
+                        checked={task.completed}
+                        onChange={e => setCompleted(e.target.checked)}
+                      />
+                      <label onDoubleClick={() => setEditingTask(task)}>{task.title}</label>
+                      <button className="destroy" onClick={deleteTask}></button>
+                    </div>
+                  </li>
+                }
               })}
           </ul>
         </section>
@@ -95,7 +98,6 @@ function App() {
           <button onClick={() => setHideCompleted(true)}>Active</button>
         </footer>
       </section>
-
 
       <footer className="info">
         <p>Double-click to edit a todo</p>
