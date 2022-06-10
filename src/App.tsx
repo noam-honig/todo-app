@@ -20,7 +20,7 @@ function App() {
 
   const createNewTask = async () => {
     if (newTaskTitle) {
-      const newTask = { title: newTaskTitle, completed: false, id: tasks.length.toString() };
+      const newTask: Task = { title: newTaskTitle, completed: false, id: tasks.length.toString() };
       setTasks([...tasks, newTask]);
       setNewTaskTitle('');
     }
@@ -56,8 +56,9 @@ function App() {
             {tasks.filter(task => !hideCompleted || !task.completed)
               .map(task => {
                 if (!editingTask || task.id != editingTask.id) {
+
                   const setCompleted = async (completed: boolean) => {
-                    const updatedTask = { ...task, completed };
+                    const updatedTask: Task = { ...task, completed };
                     setTasks(tasks.map(t => t === task ? updatedTask : t));
                   }
                   const deleteTask = async () => {
@@ -75,13 +76,13 @@ function App() {
                   </li>
                 }
                 else {
-                  const titleChange = (title: string) => {
-                    setEditingTask({ ...editingTask, title });
 
-                  };
                   const saveTask = async () => {
                     setTasks(tasks.map(t => t === task ? editingTask : t));
                     setEditingTask(undefined);
+                  };
+                  const titleChange = (title: string) => {
+                    setEditingTask({ ...editingTask, title });
                   };
                   return <li key={task.id} className="editing">
                     <input className="edit"
@@ -103,6 +104,7 @@ function App() {
       <footer className="info">
         <p>Double-click to edit a todo</p>
         <p>Based on <a href="http://todomvc.com">TodoMVC</a></p>
+        <p><a href="https://www.github.com/remult/remult" target="_blank"> Give us a ⭐ on github</a></p>
       </footer>
     </>
   );
