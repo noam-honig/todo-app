@@ -5,6 +5,7 @@
       "emitDecoratorMetadata": true,
       "esModuleInterop": true,
       "preserveValueImports": false,
+      "noEmit": false,
       "outDir": "dist"
    },
    "include": [

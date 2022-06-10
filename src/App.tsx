@@ -54,31 +54,13 @@ function App() {
           <ul className="todo-list">
             {tasks.filter(task => !hideCompleted || !task.completed)
               .map(task => {
-                if (task.id === editingTask?.id) {
-                  const titleChange = (title: string) => {
-                    setEditingTask({ ...editingTask, title });
-
-                  };
-                  const saveTask = async () => {
-                    setTasks(tasks.map(t => t === task ? editingTask! : t));
-                    setEditingTask(undefined);
-                  };
-                  return <li key={task.id} className="editing">
-                    <input className="edit"
-                      value={editingTask.title}
-                      onBlur={saveTask}
-                      onChange={e => titleChange(e.target.value)} />
-                  </li>
-                }
-                else {
-
+                if (!editingTask || task.id != editingTask.id) {
                   const setCompleted = async (completed: boolean) => {
                     setTasks(tasks.map(t => t === task ? { ...task, completed } : t));
                   }
                   const deleteTask = async () => {
                     setTasks(tasks.filter(t => t !== task));
                   };
-
                   return <li key={task.id} className={task.completed ? 'completed' : ''}>
                     <div className="view">
                       <input className="toggle" type="checkbox"
@@ -90,6 +72,23 @@ function App() {
                     </div>
                   </li>
                 }
+                else {
+                  const titleChange = (title: string) => {
+                    setEditingTask({ ...editingTask, title });
+
+                  };
+                  const saveTask = async () => {
+                    setTasks(tasks.map(t => t === task ? editingTask : t));
+                    setEditingTask(undefined);
+                  };
+                  return <li key={task.id} className="editing">
+                    <input className="edit"
+                      value={editingTask.title}
+                      onBlur={saveTask}
+                      onChange={e => titleChange(e.target.value)} />
+                  </li>
+                }
+
               })}
           </ul>
         </section>
@@ -101,8 +100,7 @@ function App() {
 
       <footer className="info">
         <p>Double-click to edit a todo</p>
-        <p>Created by <a href="http://www.github.com/remult/remult">remult</a></p>
-        <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+        <p>Based on <a href="http://todomvc.com">TodoMVC</a></p>
       </footer>
     </>
   );
