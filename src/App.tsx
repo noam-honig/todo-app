@@ -4,11 +4,15 @@ import { Task } from "./shared/Task";
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([
-    { id: 'a', title: "Task a", completed: false },
-    { id: 'b', title: "Task b", completed: false },
-    { id: 'c', title: "Task c", completed: true },
-    { id: 'd', title: "Task d", completed: false },
-    { id: 'e', title: "Task e", completed: true }
+    { id: 'a', title: "Setup", completed: true },
+    { id: 'b', title: "Entities", completed: false },
+    { id: 'c', title: "Paging, Sorting and Filtering", completed: false },
+    { id: 'd', title: "CRUD Operations", completed: false },
+    { id: 'e', title: "Validation", completed: false },
+    { id: 'f', title: "Backend methods", completed: false },
+    { id: 'g', title: "Authentication and Authorization", completed: false },
+    { id: 'h', title: "Postgres", completed: false },
+    { id: 'i', title: "Deployment", completed: false }
   ]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [editingTask, setEditingTask] = useState<Task>();
@@ -75,7 +79,7 @@ function App() {
                       checked={task.completed}
                       onChange={e => setCompleted(e.target.checked)}
                     />
-                    <label  onClick={() => setEditingTask(task)}>{task.title}</label>
+                    <label onDoubleClick={() => setEditingTask(task)}>{task.title}</label>
                     <button className="destroy" onClick={deleteTask}></button>
                   </div>
                   <input className="edit"
