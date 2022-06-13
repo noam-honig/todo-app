@@ -104,7 +104,7 @@ function App() {
       <footer className="info">
         <p>Double-click to edit a todo</p>
         <p>Based on <a href="http://todomvc.com">TodoMVC</a></p>
-        <p><a href="https://www.github.com/remult/remult" target="_blank"> Give us a ⭐ on github</a></p>
+        <p><a href="https://www.github.com/remult/remult" target="_blank"> Give remult a ⭐ on github</a></p>
       </footer>
     </>
   );
