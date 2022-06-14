@@ -1,6 +1,13 @@
 # Todo MVC Demo
 
-
+## Deploy to Heroku
+```sh
+heroku create
+heroku config:set JWT_SECRET=random-secret
+heroku addons:create heroku-postgresql:hobby-dev
+git push heroku master
+heroku apps:open
+```
 
 ## Installed components:
 1. Basic Setup: `axios`, `express` and `remult`
