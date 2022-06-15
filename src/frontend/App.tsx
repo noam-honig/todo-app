@@ -20,7 +20,11 @@ function App() {
 
   const createNewTask = async () => {
     if (newTaskTitle) {
-      const newTask: Task = { title: newTaskTitle, completed: false, id: tasks.length.toString() };
+      const newTask: Task = {
+        title: newTaskTitle,
+        completed: false,
+        id: tasks.length.toString()
+      };
       setTasks([...tasks, newTask]);
       setNewTaskTitle('');
     }
@@ -104,7 +108,10 @@ function App() {
       <footer className="info">
         <p>Double-click to edit a todo</p>
         <p>Based on <a href="http://todomvc.com">TodoMVC</a></p>
-        <p><a href="https://www.github.com/remult/remult" target="_blank"> Give remult a ⭐ on github</a></p>
+        <p>
+          <a href="https://www.github.com/remult/remult" target="_blank">
+            Give remult a ⭐ on github</a>
+        </p>
       </footer>
     </>
   );
