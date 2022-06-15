@@ -1,6 +1,6 @@
 import './App.css';
 import { useState } from "react";
-import { Task } from "./shared/Task";
+import { Task } from "./Task"
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([
