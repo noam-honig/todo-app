@@ -5,6 +5,8 @@
 heroku create
 heroku config:set JWT_SECRET=random-secret
 heroku addons:create heroku-postgresql:hobby-dev
+git add .
+git commit -m "todo app deploy"
 git push heroku master
 heroku apps:open
 ```
