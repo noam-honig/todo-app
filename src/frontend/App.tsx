@@ -4,15 +4,15 @@ import { Task } from "./Task"
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([
-    { id: 'a', title: "Setup", completed: true },
-    { id: 'b', title: "Entities", completed: false },
-    { id: 'c', title: "Paging, Sorting and Filtering", completed: false },
-    { id: 'd', title: "CRUD Operations", completed: false },
-    { id: 'e', title: "Validation", completed: false },
-    { id: 'f', title: "Backend methods", completed: false },
-    { id: 'g', title: "Authentication and Authorization", completed: false },
-    { id: 'h', title: "Postgres", completed: false },
-    { id: 'i', title: "Deployment", completed: false }
+    { id: 1, title: "Setup", completed: true },
+    { id: 2, title: "Entities", completed: false },
+    { id: 3, title: "Paging, Sorting and Filtering", completed: false },
+    { id: 4, title: "CRUD Operations", completed: false },
+    { id: 5, title: "Validation", completed: false },
+    { id: 6, title: "Backend methods", completed: false },
+    { id: 7, title: "Authentication and Authorization", completed: false },
+    { id: 8, title: "Postgres", completed: false },
+    { id: 9, title: "Deployment", completed: false }
   ]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [editingTask, setEditingTask] = useState<Task>();
@@ -23,7 +23,7 @@ function App() {
       const newTask: Task = {
         title: newTaskTitle,
         completed: false,
-        id: tasks.length.toString()
+        id: tasks.length + 1
       };
       setTasks([...tasks, newTask]);
       setNewTaskTitle('');
