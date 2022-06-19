@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "vite":"vite",
+    "vite": "vite",
     "dev": "concurrently -k -n \"API,WEB\" -c \"bgBlue.bold,bgGreen.bold\" \"ts-node-dev -P tsconfig.server.json src/backend/\" \"vite\"",
     "build": "tsc && vite build && tsc -p tsconfig.server.json",
     "start": "node dist/backend/",
@@ -21,7 +21,7 @@
     "pg": "^8.7.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "remult": "^0.13.28"
+    "remult": "^0.13.29"
   },
   "devDependencies": {
     "@types/compression": "^1.7.2",
