@@ -10,8 +10,8 @@ function App() {
     { id: 4, title: "CRUD Operations", completed: false },
     { id: 5, title: "Validation", completed: false },
     { id: 6, title: "Backend methods", completed: false },
-    { id: 7, title: "Authentication and Authorization", completed: false },
-    { id: 8, title: "Postgres", completed: false },
+    { id: 7, title: "Database", completed: false },
+    { id: 8, title: "Authentication and Authorization", completed: false },
     { id: 9, title: "Deployment", completed: false }
   ]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
