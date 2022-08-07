@@ -30,7 +30,7 @@ body {
 	visibility: hidden;
   }
   
-  div>main>div:hover>button {
+  div>main>div:focus-within>button {
 	visibility: visible;
   }
   
