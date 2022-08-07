@@ -3,7 +3,7 @@
 ## Deploy to Heroku
 ```sh
 heroku create
-heroku config:set JWT_SECRET=random-secret
+heroku config:set SESSION_SECRET=random-secret
 heroku addons:create heroku-postgresql:hobby-dev
 git add .
 git commit -m "todo app deploy"
