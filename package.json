@@ -19,7 +19,7 @@
     "pg": "^8.7.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "remult": "^0.15.1"
+    "remult": "^0.15.2"
   },
   "devDependencies": {
     "@types/compression": "^1.7.2",
