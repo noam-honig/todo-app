@@ -43,32 +43,33 @@ function App() {
           onChange={e => setNewTaskTitle(e.target.value)}
 
         />
-        {tasks.map(task => {
+        {tasks.filter(task => !hideCompleted || !task.completed)
+          .map(task => {
 
-          const setCompleted = async (completed: boolean) => {
-            const updatedTask: Task = { ...task, completed };
-            setTasks(tasks.map(t => t === task ? updatedTask : t));
-          }
-          const deleteTask = async () => {
-            setTasks(tasks.filter(t => t !== task));
-          };
-          const setTitle = (title: string) => {
-            const updatedTask: Task = { ...task, title };
-            setTasks(tasks.map(t => t === task ? updatedTask : t));
-          }
-          return (
-            <div key={task.id}>
-              <input type="checkbox"
-                checked={task.completed}
-                onChange={e => setCompleted(e.target.checked)} />
-              <input
-                value={task.title}
-                onChange={e => setTitle(e.target.value)}
-              />
-              <button onClick={deleteTask}>x</button>
-            </div>
-          );
-        })}
+            const setCompleted = async (completed: boolean) => {
+              const updatedTask: Task = { ...task, completed };
+              setTasks(tasks.map(t => t === task ? updatedTask : t));
+            }
+            const deleteTask = async () => {
+              setTasks(tasks.filter(t => t !== task));
+            };
+            const setTitle = (title: string) => {
+              const updatedTask: Task = { ...task, title };
+              setTasks(tasks.map(t => t === task ? updatedTask : t));
+            }
+            return (
+              <div key={task.id}>
+                <input type="checkbox"
+                  checked={task.completed}
+                  onChange={e => setCompleted(e.target.checked)} />
+                <input
+                  value={task.title}
+                  onChange={e => setTitle(e.target.value)}
+                />
+                <button onClick={deleteTask}>x</button>
+              </div>
+            );
+          })}
       </main>
       <input
         type="checkbox"
