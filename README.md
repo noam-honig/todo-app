@@ -20,8 +20,8 @@ heroku apps:open
    See [Basic Setup](https://remult.dev/tutorials/react/#option-2-step-by-step-setup)
 2. Authentication: `jsonwebtoken`,`jwt-decode` and `express-jwt`
    ```sh
-   npm i cookie-parser cookie-session
-   npm i --save-dev @types/cookie-parser @types/cookie-session
+   npm i cookie-session
+   npm i --save-dev @types/cookie-session
    ```
    See [Authentication](https://remult.dev/tutorials/react/auth.html#user-authentication)
 3. Postgres:
