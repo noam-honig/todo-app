@@ -41,7 +41,6 @@ function App() {
           onBlur={addTask}
           placeholder="What needs to be done?"
           onChange={e => setNewTaskTitle(e.target.value)}
-
         />
         {tasks.filter(task => !hideCompleted || !task.completed)
           .map(task => {
