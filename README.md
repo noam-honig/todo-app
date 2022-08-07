@@ -14,14 +14,14 @@ heroku apps:open
 ## Installed components:
 1. Basic Setup: `axios`, `express` and `remult`
    ```sh
-   npm i axios express remult
+   npm i express remult
    npm i --save-dev @types/express ts-node-dev concurrently
    ```
    See [Basic Setup](https://remult.dev/tutorials/react/#option-2-step-by-step-setup)
 2. Authentication: `jsonwebtoken`,`jwt-decode` and `express-jwt`
    ```sh
-   npm i jsonwebtoken jwt-decode express-jwt
-   npm i --save-dev @types/jsonwebtoken 
+   npm i cookie-parser cookie-session
+   npm i --save-dev @types/cookie-parser @types/cookie-session
    ```
    See [Authentication](https://remult.dev/tutorials/react/auth.html#user-authentication)
 3. Postgres:
