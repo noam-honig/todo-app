@@ -103,6 +103,10 @@ body {
   }
   
   span {
-	color: red;
 	display: block;
+	color: red;
+	font-style: italic;
+	font-size: medium;
+	display: block;
+	margin: 0 0 0 37px;
   }
