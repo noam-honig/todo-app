@@ -29,8 +29,8 @@ body {
 	padding: 4px 8px;
 	visibility: hidden;
   }
-  
-  div>main>div:hover>button {
+  div>main>div:hover>button,
+  div>main>div:focus-within>button {
 	visibility: visible;
   }
   
@@ -103,6 +103,10 @@ body {
   }
   
   span {
-	color: red;
 	display: block;
+	color: red;
+	font-style: italic;
+	font-size: medium;
+	display: block;
+	margin: 0 0 0 37px;
   }
