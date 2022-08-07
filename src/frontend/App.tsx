@@ -45,18 +45,18 @@ function App() {
         />
         {tasks.filter(task => !hideCompleted || !task.completed)
           .map(task => {
+            const setTask = (value: typeof task) =>
+              setTasks(tasks.map(t => t === task ? value : t));
 
             const setCompleted = async (completed: boolean) => {
-              const updatedTask: Task = { ...task, completed };
-              setTasks(tasks.map(t => t === task ? updatedTask : t));
-            }
+              setTask({ ...task, completed });
+            };
+            const setTitle = (title: string) => {
+              setTask({ ...task, title });
+            };
             const deleteTask = async () => {
               setTasks(tasks.filter(t => t !== task));
             };
-            const setTitle = (title: string) => {
-              const updatedTask: Task = { ...task, title };
-              setTasks(tasks.map(t => t === task ? updatedTask : t));
-            }
             return (
               <div key={task.id}>
                 <input type="checkbox"
