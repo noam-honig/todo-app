@@ -1,4 +1,4 @@
-# Todo MVC Demo
+# Todo APP
 
 ## Deploy to Heroku
 ```sh
