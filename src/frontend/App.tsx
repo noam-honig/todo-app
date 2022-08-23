@@ -15,7 +15,6 @@ function App() {
     { id: 9, title: "Deployment", completed: false }
   ]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
-  const [hideCompleted, setHideCompleted] = useState<boolean>(false);
 
   const addTask = async () => {
     if (newTaskTitle) {
@@ -42,7 +41,7 @@ function App() {
           placeholder="What needs to be done?"
           onChange={e => setNewTaskTitle(e.target.value)}
         />
-        {tasks.filter(task => !hideCompleted || !task.completed)
+        {tasks
           .map(task => {
             const setTask = (value: typeof task) =>
               setTasks(tasks.map(t => t === task ? value : t));
@@ -70,10 +69,6 @@ function App() {
             );
           })}
       </main>
-      <input
-        type="checkbox"
-        checked={hideCompleted}
-        onChange={e => setHideCompleted(e.target.checked)} /> Hide Completed
       <div>
         <button onClick={() => setAll(true)}>Set all as completed</button>
         <button onClick={() => setAll(false)}>Set all as uncompleted</button>

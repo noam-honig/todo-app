@@ -12,13 +12,13 @@ heroku apps:open
 ```
 
 ## Installed components:
-1. Basic Setup: `axios`, `express` and `remult`
+1. Basic Setup: `express` and `remult`
    ```sh
    npm i express remult
    npm i --save-dev @types/express ts-node-dev concurrently
    ```
    See [Basic Setup](https://remult.dev/tutorials/react/#option-2-step-by-step-setup)
-2. Authentication: `jsonwebtoken`,`jwt-decode` and `express-jwt`
+2. Authentication: `cookie-session`
    ```sh
    npm i cookie-session
    npm i --save-dev @types/cookie-session
