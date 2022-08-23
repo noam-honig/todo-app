@@ -9,6 +9,7 @@ git add .
 git commit -m "todo app deploy"
 git push heroku master
 heroku apps:open
+
 ```
 
 ## Installed components:
