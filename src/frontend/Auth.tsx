@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UserInfo } from "remult";
 
 const Auth: React.FC<{ children: JSX.Element }> = ({ children }) => {
@@ -25,20 +25,30 @@ const Auth: React.FC<{ children: JSX.Element }> = ({ children }) => {
         });
         setCurrentUser(undefined);
     }
+    useEffect(() => {
+        fetch('/api/currentUser').then(r => r.json())
+            .then(async currentUserFromServer => {
+                setCurrentUser(currentUserFromServer)
+            });
+    }, []);
 
     if (!currentUser)
         return (
-            <header>
-                <input value={signInUsername}
-                    onChange={e => setSignInUsername(e.target.value)}
-                    placeholder="Username, try Steve or Jane" />
-                <button onClick={signIn}>Sign in</button>
-            </header>);
+            <>
+                <header>
+                    <input value={signInUsername}
+                        onChange={e => setSignInUsername(e.target.value)}
+                        placeholder="Username, try Steve or Jane" />
+                    <button onClick={signIn}>Sign in</button>
+                </header>
+                <a href="https://www.github.com/remult/remult">give remult a ⭐</a>
+            </>);
     return <>
         <header>
             Hello {currentUser.name} <button onClick={signOut}>Sign Out</button>
         </header>
         {children}
+        <a href="https://www.github.com/remult/remult">give remult a ⭐</a>
     </>
 }
 export default Auth;
