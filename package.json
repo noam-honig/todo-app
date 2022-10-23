@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "vite": "vite",
-    "dev": "concurrently \"ts-node-dev -P tsconfig.server.json src/backend/\" \"vite\" -n \"API,WEB\" -c \"bgBlue.bold,bgGreen.bold\" -k",
+    "dev": "concurrently \"vite\" \"ts-node-dev -P tsconfig.server.json src/backend/\" -n \"WEB,API\" -c \"bgGreen.bold,bgBlue.bold\" -k",
     "build": "tsc && vite build && tsc -p tsconfig.server.json",
     "start": "node dist/backend/",
     "preview": "vite preview"
