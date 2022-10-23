@@ -1,38 +1,46 @@
-import { useState } from "react";
-import { Task } from "./Task"
+import { useEffect, useState } from "react";
+import { remult } from "remult";
+import { Task } from "../shared/Task";
+import { TasksController } from "../shared/TasksController";
+
+if (import.meta.env.DEV)
+  remult.apiClient.url = 'http://localhost:3002/api';
+
+const taskRepo = remult.repo(Task);
 
 function App() {
-  const [tasks, setTasks] = useState<Task[]>([
-    { id: 1, title: "Setup", completed: true },
-    { id: 2, title: "Entities", completed: false },
-    { id: 3, title: "Paging, Sorting and Filtering", completed: false },
-    { id: 4, title: "CRUD Operations", completed: false },
-    { id: 5, title: "Validation", completed: false },
-    { id: 6, title: "Backend methods", completed: false },
-    { id: 7, title: "Database", completed: false },
-    { id: 8, title: "Authentication and Authorization", completed: false },
-    { id: 9, title: "Deployment", completed: false }
-  ]);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
+  const [hideCompleted, setHideCompleted] = useState(false);
+  useEffect(() =>
+    taskRepo.query({
+      where: {
+        completed: hideCompleted ? false : undefined
+      }
+    }).subscribe(setTasks)
+    , [hideCompleted]);
 
   const addTask = async () => {
     if (newTaskTitle) {
-      const newTask: Task = {
+      await taskRepo.insert({
         title: newTaskTitle,
         completed: false,
         id: tasks.length + 1
-      };
-      setTasks([...tasks, newTask]);
+      });
       setNewTaskTitle('');
     }
   }
 
   const setAll = async (completed: boolean) => {
-    setTasks(tasks.map(task => ({ ...task, completed })));
+    await TasksController.setAll(completed);
   }
 
   return (
     <div>
+      <input type="checkbox" checked={hideCompleted}
+        onChange={e => setHideCompleted(e.target.checked)}
+      />
+      Hide completed
       <main>
         <input
           value={newTaskTitle}
@@ -46,15 +54,23 @@ function App() {
             const setTask = (value: typeof task) =>
               setTasks(tasks.map(t => t === task ? value : t));
 
-            const setCompleted = async (completed: boolean) => {
+            const setCompleted = (completed: boolean) => {
               setTask({ ...task, completed });
+              taskRepo.save({ ...task, completed });
             };
             const setTitle = (title: string) => {
               setTask({ ...task, title });
             };
             const deleteTask = async () => {
-              setTasks(tasks.filter(t => t !== task));
+              await taskRepo.delete(task);
             };
+            const saveTask = async () => {
+              try {
+                await taskRepo.save(task);
+              } catch (error: any) {
+                alert(error.message);
+              }
+            }
             return (
               <div key={task.id}>
                 <input type="checkbox"
@@ -63,6 +79,7 @@ function App() {
                 <input
                   value={task.title}
                   onChange={e => setTitle(e.target.value)}
+                  onBlur={saveTask}
                 />
                 <button onClick={deleteTask}>x</button>
               </div>

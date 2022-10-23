@@ -10,15 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/cors": "^2.8.12",
     "compression": "^1.7.4",
     "cookie-session": "^2.0.0",
+    "cors": "^2.8.5",
     "express": "^4.18.1",
     "helmet": "^6.0.0",
     "heroku-ssl-redirect": "^0.1.1",
     "pg": "^8.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "remult": "^0.17.0-exp.2"
+    "remult": "^0.17.0-exp.3"
   },
   "devDependencies": {
     "@types/compression": "^1.7.2",
