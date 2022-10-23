@@ -37,6 +37,7 @@ function App() {
         <input
           value={newTaskTitle}
           onBlur={addTask}
+          onKeyDown={e => { if (e.key === "Enter") addTask() }}
           placeholder="What needs to be done?"
           onChange={e => setNewTaskTitle(e.target.value)}
         />
