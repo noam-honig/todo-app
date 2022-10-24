@@ -17,12 +17,12 @@ function App() {
 
   const addTask = async () => {
     if (newTaskTitle) {
-      const newTask: Task = {
+      setTasks([...tasks,
+      {
         title: newTaskTitle,
         completed: false,
         id: tasks.length + 1
-      };
-      setTasks([...tasks, newTask]);
+      }]);
       setNewTaskTitle('');
     }
   }
