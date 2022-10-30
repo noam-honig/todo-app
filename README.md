@@ -8,9 +8,12 @@ heroku addons:create heroku-postgresql:hobby-dev
 git add .
 git commit -m "todo app deploy"
 git push heroku master
+heroku ps:scale web=1:hobby
 heroku apps:open
 
 ```
+
+
 
 
 ## Installed components:
