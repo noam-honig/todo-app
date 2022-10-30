@@ -1,17 +1,17 @@
 # Todo APP
 
-## Deploy to railway
-1. init
+## Deploy to Heroku
 ```sh
-railway init
+heroku create
+heroku config:set SESSION_SECRET=random-secret
+heroku addons:create heroku-postgresql:hobby-dev
+git add .
+git commit -m "todo app deploy"
+git push heroku master
+heroku apps:open
+
 ```
-2. add database in ui
-3. upload code
-   ```sh
-   railway up
-   ```
-4. generate custom url on site
-```
+
 
 ## Installed components:
 1. Basic Setup: `express` and `remult`
