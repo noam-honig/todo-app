@@ -27,7 +27,7 @@ function App() {
     }
   }
 
-  const setAll = async (completed: boolean) => {
+  const setAllCompleted = async (completed: boolean) => {
     setTasks(tasks.map(task => ({ ...task, completed })));
   }
 
@@ -70,8 +70,8 @@ function App() {
           })}
       </main>
       <div>
-        <button onClick={() => setAll(true)}>Set all as completed</button>
-        <button onClick={() => setAll(false)}>Set all as uncompleted</button>
+        <button onClick={() => setAllCompleted(true)}>Set all as completed</button>
+        <button onClick={() => setAllCompleted(false)}>Set all as uncompleted</button>
       </div>
     </div>
   );
