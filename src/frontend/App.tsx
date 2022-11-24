@@ -16,6 +16,7 @@ function App() {
   const [newTaskTitle, setNewTaskTitle] = useState('')
 
   const addTask = async (e: FormEvent) => {
+    e.preventDefault()
     if (newTaskTitle) {
       setTasks([
         ...tasks,
@@ -27,7 +28,6 @@ function App() {
       ])
       setNewTaskTitle('')
     }
-    e.preventDefault()
   }
 
   const setAllCompleted = async (completed: boolean) => {
