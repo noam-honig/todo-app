@@ -17,7 +17,7 @@ function App() {
 
   const addTask = async (e: FormEvent) => {
     e.preventDefault()
-    if (newTaskTitle) {
+    try {
       setTasks([
         ...tasks,
         {
@@ -27,6 +27,8 @@ function App() {
         }
       ])
       setNewTaskTitle('')
+    } catch (error: any) {
+      alert(error.message)
     }
   }
 
