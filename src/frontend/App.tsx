@@ -1,19 +1,19 @@
-import { FormEvent, useState } from "react";
-import { Task } from "./Task";
+import { FormEvent, useState } from 'react'
+import { Task } from './Task'
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([
-    { id: 1, title: "Setup", completed: true },
-    { id: 2, title: "Entities", completed: false },
-    { id: 3, title: "Paging, Sorting and Filtering", completed: false },
-    { id: 4, title: "CRUD Operations", completed: false },
-    { id: 5, title: "Validation", completed: false },
-    { id: 6, title: "Backend methods", completed: false },
-    { id: 7, title: "Database", completed: false },
-    { id: 8, title: "Authentication and Authorization", completed: false },
-    { id: 9, title: "Deployment", completed: false },
-  ]);
-  const [newTaskTitle, setNewTaskTitle] = useState("");
+    { id: 1, title: 'Setup', completed: true },
+    { id: 2, title: 'Entities', completed: false },
+    { id: 3, title: 'Paging, Sorting and Filtering', completed: false },
+    { id: 4, title: 'CRUD Operations', completed: false },
+    { id: 5, title: 'Validation', completed: false },
+    { id: 6, title: 'Backend methods', completed: false },
+    { id: 7, title: 'Database', completed: false },
+    { id: 8, title: 'Authentication and Authorization', completed: false },
+    { id: 9, title: 'Deployment', completed: false }
+  ])
+  const [newTaskTitle, setNewTaskTitle] = useState('')
 
   const addTask = async (e: FormEvent) => {
     if (newTaskTitle) {
@@ -22,17 +22,17 @@ function App() {
         {
           title: newTaskTitle,
           completed: false,
-          id: tasks.length + 1,
-        },
-      ]);
-      setNewTaskTitle("");
+          id: tasks.length + 1
+        }
+      ])
+      setNewTaskTitle('')
     }
-    e.preventDefault();
-  };
+    e.preventDefault()
+  }
 
   const setAllCompleted = async (completed: boolean) => {
-    setTasks(tasks.map((task) => ({ ...task, completed })));
-  };
+    setTasks(tasks.map((task) => ({ ...task, completed })))
+  }
 
   return (
     <div>
@@ -46,17 +46,17 @@ function App() {
         </form>
         {tasks.map((task) => {
           const setTask = (value: typeof task) =>
-            setTasks(tasks.map((t) => (t === task ? value : t)));
+            setTasks(tasks.map((t) => (t === task ? value : t)))
 
           const setCompleted = async (completed: boolean) => {
-            setTask({ ...task, completed });
-          };
+            setTask({ ...task, completed })
+          }
           const setTitle = (title: string) => {
-            setTask({ ...task, title });
-          };
+            setTask({ ...task, title })
+          }
           const deleteTask = async () => {
-            setTasks(tasks.filter((t) => t !== task));
-          };
+            setTasks(tasks.filter((t) => t !== task))
+          }
           return (
             <div key={task.id}>
               <input
@@ -70,7 +70,7 @@ function App() {
               />
               <button onClick={deleteTask}>x</button>
             </div>
-          );
+          )
         })}
       </main>
       <div>
@@ -82,6 +82,6 @@ function App() {
         </button>
       </div>
     </div>
-  );
+  )
 }
-export default App;
+export default App
