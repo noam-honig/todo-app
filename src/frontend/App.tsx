@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Task } from "./Task";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
   ]);
   const [newTaskTitle, setNewTaskTitle] = useState("");
 
-  const addTask = async () => {
+  const addTask = async (e: FormEvent) => {
     if (newTaskTitle) {
       setTasks([
         ...tasks,
@@ -27,6 +27,7 @@ function App() {
       ]);
       setNewTaskTitle("");
     }
+    e.preventDefault();
   };
 
   const setAllCompleted = async (completed: boolean) => {
@@ -36,12 +37,7 @@ function App() {
   return (
     <div>
       <main>
-        <form
-          onSubmit={(e) => {
-            addTask();
-            e.preventDefault();
-          }}
-        >
+        <form onSubmit={addTask}>
           <input
             value={newTaskTitle}
             placeholder="What needs to be done?"
