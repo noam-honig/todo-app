@@ -1,5 +1,5 @@
 export class Task {
   id = 0;
-  title = '';
+  title = "";
   completed = false;
 }
