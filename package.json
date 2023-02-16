@@ -14,7 +14,7 @@
     "pg": "^8.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "remult": "^0.17.0-exp.7",
+    "remult": "^0.18.1-exp.35",
     "vite3-plugin-express": "^0.1.3"
   },
   "devDependencies": {

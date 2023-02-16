@@ -37,53 +37,57 @@ function App() {
   }
 
   return (
-    <div>
-      <main>
-        <form onSubmit={addTask}>
-          <input
-            value={newTaskTitle}
-            placeholder="What needs to be done?"
-            onChange={(e) => setNewTaskTitle(e.target.value)}
-          />
-        </form>
-        {tasks.map((task) => {
-          const setTask = (value: typeof task) =>
-            setTasks(tasks.map((t) => (t === task ? value : t)))
+    <main>
+      <form onSubmit={addTask}>
+        <input
+          value={newTaskTitle}
+          placeholder="What needs to be done?"
+          onChange={(e) => setNewTaskTitle(e.target.value)}
+        />
+        <button>Add</button>
+      </form>
+      {tasks.map((task) => {
+        const setTask = (value: typeof task) =>
+          setTasks(tasks.map((t) => (t === task ? value : t)))
 
-          const setCompleted = async (completed: boolean) => {
-            setTask({ ...task, completed })
-          }
-          const setTitle = (title: string) => {
-            setTask({ ...task, title })
-          }
-          const deleteTask = async () => {
+        const setCompleted = async (completed: boolean) => {
+          setTask({ ...task, completed })
+        }
+        const setTitle = (title: string) => {
+          setTask({ ...task, title })
+        }
+        const deleteTask = async () => {
+          try {
             setTasks(tasks.filter((t) => t !== task))
+          } catch (error: any) {
+            alert(error.message)
           }
-          return (
-            <div key={task.id}>
-              <input
-                type="checkbox"
-                checked={task.completed}
-                onChange={(e) => setCompleted(e.target.checked)}
-              />
-              <input
-                value={task.title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-              <button onClick={deleteTask}>x</button>
-            </div>
-          )
-        })}
-      </main>
-      <div>
+        }
+
+        return (
+          <div key={task.id}>
+            <input
+              type="checkbox"
+              checked={task.completed}
+              onChange={(e) => setCompleted(e.target.checked)}
+            />
+            <input
+              value={task.title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <button onClick={deleteTask}>x</button>
+          </div>
+        )
+      })}
+      <footer>
         <button onClick={() => setAllCompleted(true)}>
           Set all as completed
         </button>
         <button onClick={() => setAllCompleted(false)}>
           Set all as uncompleted
         </button>
-      </div>
-    </div>
+      </footer>
+    </main>
   )
 }
 export default App
