@@ -81,10 +81,10 @@ function App() {
       })}
       <footer>
         <button onClick={() => setAllCompleted(true)}>
-          Set all as completed
+          Set all completed
         </button>
         <button onClick={() => setAllCompleted(false)}>
-          Set all as uncompleted
+          Set all uncompleted
         </button>
       </footer>
     </main>
