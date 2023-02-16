@@ -48,7 +48,7 @@ function App() {
       </form>
       {tasks.map((task) => {
         const setTask = (value: typeof task) =>
-          setTasks(tasks.map((t) => (t === task ? value : t)))
+          setTasks((tasks) => tasks.map((t) => (t === task ? value : t)))
 
         const setCompleted = async (completed: boolean) => {
           setTask({ ...task, completed })
