@@ -1,5 +1,6 @@
 export class Task {
-  id = 0
+  id = ''
   title = ''
   completed = false
+  createdAt?: Date
 }

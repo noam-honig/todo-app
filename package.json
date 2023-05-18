@@ -15,7 +15,7 @@
     "pg": "^8.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "remult": "^0.18.1-exp.35"
+    "remult": "^0.20.1"
   },
   "devDependencies": {
     "@types/cookie-session": "^2.0.44",
