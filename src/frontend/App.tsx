@@ -12,7 +12,7 @@ export default function App() {
     { id: '7', title: 'Updating multiple tasks', completed: false },
     { id: '8', title: 'Database', completed: false },
     { id: '9', title: 'Authentication and Authorization', completed: false },
-    { id: '10', title: 'Deployment', completed: false }
+    { id: '10', title: 'Deployment', completed: false },
   ])
   const [newTaskTitle, setNewTaskTitle] = useState('')
 
@@ -23,7 +23,7 @@ export default function App() {
         title: newTaskTitle,
         completed: false,
         id: (tasks.length + 1).toString(),
-        createdAt: new Date()
+        createdAt: new Date(),
       }
       setTasks([...tasks, newTask])
       setNewTaskTitle('')

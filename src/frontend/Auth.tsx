@@ -6,7 +6,7 @@ export default function Auth() {
   const [signInUsername, setSignInUsername] = useState('')
   const [currentUser, setCurrentUser] = useState<UserInfo>()
   remult.user = currentUser
-  
+
   async function signIn(f: FormEvent) {
     f.preventDefault()
     const result = await fetch('/api/signIn', {
