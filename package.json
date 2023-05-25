@@ -12,12 +12,11 @@
     "@vitejs/plugin-react": "^3.1.0",
     "cookie-session": "^2.0.0",
     "express": "^4.18.1",
-    "express-graphql": "^0.12.0",
-    "graphql": "^15.8.0",
+    "graphql-yoga": "^3.9.1",
     "pg": "^8.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "remult": "^0.20.1",
+    "remult": "^0.20.3-exp.1",
     "swagger-ui-express": "^4.6.3"
   },
   "devDependencies": {
