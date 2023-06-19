@@ -2,7 +2,16 @@ import { FormEvent, useState } from 'react'
 import { Task } from '../models/Task'
 
 export default function Todo() {
-  const [tasks, setTasks] = useState<Task[]>([])
+  const [tasks, setTasks] = useState<Task[]>([
+    { id: '1', title: 'Setup', completed: true },
+    { id: '2', title: 'Entities', completed: false },
+    { id: '3', title: 'Paging, Sorting and Filtering', completed: false },
+    { id: '4', title: 'CRUD Operations', completed: false },
+    { id: '5', title: 'Live Query', completed: false },
+    { id: '6', title: 'Validation', completed: false },
+    { id: '7', title: 'Authentication and Authorization', completed: false },
+    { id: '8', title: 'Deployment', completed: false },
+  ])
   const [newTaskTitle, setNewTaskTitle] = useState('')
 
   async function addTask(e: FormEvent) {
