@@ -3,10 +3,7 @@ import express, { Router } from 'express'
 import type { UserInfo } from 'remult'
 
 export const auth = Router()
-auth.use(
-  '/api',
-  session({ secret: process.env['SESSION_SECRET'] || 'my secret' })
-)
+auth.use('/api', session({ secret: process.env['SESSION_SECRET'] }))
 
 export const validUsers: UserInfo[] = [
   { id: '1', name: 'Jane' },
