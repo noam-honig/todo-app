@@ -59,7 +59,7 @@ export default function Todo() {
               checked={task.completed}
               onChange={(e) => setCompleted(e.target.checked)}
             />
-            {task.title}
+            <span>{task.title}</span>
             <button onClick={deleteTask}>x</button>
           </div>
         )

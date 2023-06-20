@@ -33,8 +33,8 @@ export default function Auth() {
       .then((r) => r.json())
       .then(async (currentUserFromServer) => {
         setCurrentUser(currentUserFromServer)
-        setLoading(false)
       })
+      .finally(() => setLoading(false))
   }, [])
   if (loading) return <>loading...</>
   return (
