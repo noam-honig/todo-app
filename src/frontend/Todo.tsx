@@ -40,15 +40,9 @@ export default function Todo() {
         <button>Add</button>
       </form>
       {tasks.map((task) => {
-        function setTask(value: Task) {
-          setTasks((tasks) => tasks.map((t) => (t === task ? value : t)))
-        }
-
         async function setCompleted(completed: boolean) {
-          setTask({ ...task, completed })
-        }
-        function setTitle(title: string) {
-          setTask({ ...task, title })
+          const updatedTask = { ...task, completed }
+          setTasks((tasks) => tasks.map((t) => (t === task ? updatedTask : t)))
         }
         async function deleteTask() {
           try {
@@ -65,10 +59,7 @@ export default function Todo() {
               checked={task.completed}
               onChange={(e) => setCompleted(e.target.checked)}
             />
-            <input
-              value={task.title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
+            {task.title}
             <button onClick={deleteTask}>x</button>
           </div>
         )
