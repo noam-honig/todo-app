@@ -6,7 +6,7 @@ export const auth = Router()
 auth.use('/api', session({ secret: process.env['SESSION_SECRET'] }))
 
 export const validUsers: UserInfo[] = [
-  { id: '1', name: 'Jane' },
+  { id: '1', name: 'Jane', roles: ['admin'] },
   { id: '2', name: 'Steve' },
 ]
 auth.post('/api/signIn', express.json({ type: 'text' }), (req, res) => {

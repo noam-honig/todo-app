@@ -2,6 +2,7 @@ import express from 'express'
 import { auth, getUser } from './auth'
 import { remultExpress } from 'remult/remult-express'
 import { createPostgresDataProvider } from 'remult/postgres'
+import { Task } from '../models/Task'
 
 export const app = express()
 app.use(auth)
@@ -9,6 +10,7 @@ app.use(auth)
 const api = remultExpress({
   dataProvider: createPostgresDataProvider(),
   getUser,
+  entities: [Task],
 })
 app.use(api)
 

@@ -1,28 +1,31 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { Task } from '../models/Task'
+import { remult } from 'remult'
 
+const taskRepo = remult.repo(Task)
 export default function Todo() {
-  const [tasks, setTasks] = useState<Task[]>([
-    { id: '1', title: 'Setup', completed: true },
-    { id: '2', title: 'Entities', completed: false },
-    { id: '3', title: 'Paging, Sorting and Filtering', completed: false },
-    { id: '4', title: 'CRUD Operations', completed: false },
-    { id: '5', title: 'Live Query', completed: false },
-    { id: '6', title: 'Validation', completed: false },
-    { id: '7', title: 'Authentication and Authorization', completed: false },
-    { id: '8', title: 'Deployment', completed: false },
-  ])
+  const [tasks, setTasks] = useState<Task[]>([])
   const [newTaskTitle, setNewTaskTitle] = useState('')
+
+  useEffect(() => {
+    return taskRepo
+      .liveQuery({
+        orderBy: {
+          createdAt: 'asc',
+        },
+        where: {
+          completed: undefined,
+        },
+      })
+      .subscribe((info) => setTasks(info.applyChanges))
+  }, [])
 
   async function addTask(e: FormEvent) {
     e.preventDefault()
     try {
-      const newTask = {
+      const newTask = await taskRepo.insert({
         title: newTaskTitle,
-        completed: false,
-        id: (tasks.length + 1).toString(),
-        createdAt: new Date(),
-      }
+      })
       setTasks([...tasks, newTask])
       setNewTaskTitle('')
     } catch (error: any) {
@@ -31,21 +34,24 @@ export default function Todo() {
   }
   return (
     <main>
-      <form onSubmit={addTask}>
-        <input
-          value={newTaskTitle}
-          placeholder="What needs to be done?"
-          onChange={(e) => setNewTaskTitle(e.target.value)}
-        />
-        <button>Add</button>
-      </form>
+      {taskRepo.metadata.apiInsertAllowed() && (
+        <form onSubmit={addTask}>
+          <input
+            value={newTaskTitle}
+            placeholder="What needs to be done?"
+            onChange={(e) => setNewTaskTitle(e.target.value)}
+          />
+          <button>Add</button>
+        </form>
+      )}
       {tasks.map((task) => {
         async function setCompleted(completed: boolean) {
-          const updatedTask = { ...task, completed }
+          const updatedTask = await taskRepo.save({ ...task, completed })
           setTasks((tasks) => tasks.map((t) => (t === task ? updatedTask : t)))
         }
         async function deleteTask() {
           try {
+            await taskRepo.delete(task)
             setTasks(tasks.filter((t) => t !== task))
           } catch (error: any) {
             alert(error.message)
