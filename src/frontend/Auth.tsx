@@ -3,9 +3,10 @@ import { remult, UserInfo } from 'remult'
 import Todo from './Todo'
 
 export default function Auth() {
+  const [currentUser, setCurrentUser] = useState<UserInfo>()
+  const [loading, setLoading] = useState(true)
   const [showSignIn, setShowSignIn] = useState(false)
   const [signInUsername, setSignInUsername] = useState('')
-  const [currentUser, setCurrentUser] = useState<UserInfo>()
   remult.user = currentUser
 
   async function signIn(f: FormEvent) {
@@ -32,9 +33,10 @@ export default function Auth() {
       .then((r) => r.json())
       .then(async (currentUserFromServer) => {
         setCurrentUser(currentUserFromServer)
+        setLoading(false)
       })
   }, [])
-
+  if (loading) return <>loading...</>
   return (
     <>
       {!currentUser ? (
