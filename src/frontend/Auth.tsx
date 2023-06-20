@@ -16,9 +16,7 @@ export default function Auth() {
       body: JSON.stringify({ username: signInUsername }),
     })
     if (result.ok) {
-      setShowSignIn(false)
-      setCurrentUser(await result.json())
-      setSignInUsername('')
+      window.location.reload()
     } else alert(await result.json())
   }
   async function signOut() {
