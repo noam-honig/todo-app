@@ -4,6 +4,8 @@ import { remultExpress } from 'remult/remult-express'
 import { createPostgresDataProvider } from 'remult/postgres'
 
 export const app = express()
+
+// Simple Cookie Session User Authentication
 app.use(auth)
 
 const api = remultExpress({
@@ -12,7 +14,15 @@ const api = remultExpress({
 })
 app.use(api)
 
-// serve static files
+/**
+ * In Development:
+ * Vite dev server serves and hot reload the api
+ * @see
+ * vite.config.ts
+ * 
+ * In Production:
+ * express serves the api and the react app from /dist
+ */
 if (!process.env['VITE']) {
   const frontendFiles = process.cwd() + '/dist'
   app.use(express.static(frontendFiles))
