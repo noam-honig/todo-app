@@ -1,6 +1,8 @@
 import session from 'cookie-session'
 import express, { Router } from 'express'
 import type { UserInfo } from 'remult'
+import { config } from 'dotenv'
+config()
 
 export const auth = Router()
 auth.use('/api', session({ secret: process.env['SESSION_SECRET'] }))
