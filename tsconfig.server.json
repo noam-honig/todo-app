@@ -1,12 +1,15 @@
 {
    "extends": "./tsconfig.json",
    "compilerOptions": {
-      "module": "commonjs",
+    //  "module": "commonjs",
       "esModuleInterop": true,
       "preserveValueImports": false,
       "noEmit": false,
       "outDir": "dist",
-      "rootDir": "src"
+      "rootDir": "src",
+      "experimentalDecorators": false,
+      "target": "es5"
+      
    },
    "include": [
       "src/backend/index.ts"

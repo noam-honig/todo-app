@@ -2,6 +2,7 @@ import express from 'express'
 import { auth, getUser } from './auth'
 import { remultExpress } from 'remult/remult-express'
 import { createPostgresDataProvider } from 'remult/postgres'
+import { Task } from '../models/Task'
 
 export const app = express()
 
@@ -11,6 +12,7 @@ app.use(auth)
 const api = remultExpress({
   dataProvider: createPostgresDataProvider(),
   getUser,
+  entities: [Task],
 })
 app.use(api)
 
@@ -19,7 +21,7 @@ app.use(api)
  * Vite dev server serves and hot reload the api
  * @see
  * vite.config.ts
- * 
+ *
  * In Production:
  * express serves the api and the react app from /dist
  */
