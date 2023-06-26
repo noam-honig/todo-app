@@ -2,7 +2,6 @@
    "extends": "./tsconfig.json",
    "compilerOptions": {
       "module": "commonjs",
-      "emitDecoratorMetadata": true,
       "esModuleInterop": true,
       "preserveValueImports": false,
       "noEmit": false,
