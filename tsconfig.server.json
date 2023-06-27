@@ -2,7 +2,7 @@
    "extends": "./tsconfig.json",
    "compilerOptions": {
       "module": "commonjs",
-      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
       "esModuleInterop": true,
       "preserveValueImports": false,
       "noEmit": false,
