@@ -9,7 +9,7 @@ body {
   justify-content: center;
 }
 
-body>div {
+body > div {
   flex-direction: column;
   display: flex;
   width: 100%;
@@ -17,8 +17,8 @@ body>div {
   min-width: 300px;
 }
 
-body>div>div {
-  width: 100%
+body > div > div {
+  width: 100%;
 }
 
 h1 {
@@ -38,9 +38,13 @@ main {
   border-radius: 0.5em;
 }
 
-main>div,
-main>form {
+main > div,
+main > form {
   border-bottom: 1px solid lightgray;
+}
+main > div > span {
+  width: 100%;
+  padding: 0.25em;
 }
 
 input {
@@ -52,13 +56,12 @@ input {
   padding: 0.25em;
 }
 
-input:checked+input {
+input:checked + input {
   text-decoration: line-through;
 }
 
 input:placeholder-shown {
   font-style: italic;
-  
 }
 
 input[type='checkbox'] {
@@ -95,7 +98,7 @@ button {
   white-space: nowrap;
 }
 
-main>div>button {
+main > div > button {
   border: 0;
   color: white;
 }
@@ -105,7 +108,7 @@ button:hover {
   background-color: whitesmoke;
 }
 
-div>main>div:hover>button,
-div>main>div:focus-within>button {
+div > main > div:hover > button,
+div > main > div:focus-within > button {
   color: inherit;
 }
