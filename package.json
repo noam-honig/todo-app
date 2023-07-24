@@ -16,7 +16,7 @@
     "pg": "^8.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "remult": "^0.21.1-exp.7",
+    "remult": "^0.22.0",
     "swagger-ui-express": "^4.6.3",
     "tsx": "^3.12.7"
   },
