@@ -35,17 +35,18 @@ export default function Auth() {
   if (!currentUser)
     return (
       <>
-        <main>
+        <main className="sign-in">
+          <h2>Sign In</h2>
           <form>
+            <label>Name</label>
             <input
               value={signInUsername}
               onChange={(e) => setSignInUsername(e.target.value)}
-              placeholder="Username, try Steve or Jane"
+              placeholder="Try Steve or Jane"
             />
             <button onClick={signIn}>Sign in</button>
           </form>
         </main>
-        <a href="https://www.github.com/remult/remult">give remult a ⭐</a>
       </>
     )
   return (
