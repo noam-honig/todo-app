@@ -13,6 +13,7 @@ git commit -m "todo app deploy"
 git push heroku master
 heroku ps:scale web=1:eco
 heroku apps:open
+
 ```
 
 
