@@ -1,18 +1,19 @@
 # Todo APP
 
-## Deploy to Heroku
+```ts
+configuration: {ssl: { rejectUnauthorized: false },},
+```
+
 ```sh
 heroku create
 heroku config:set SESSION_SECRET=random-secret
-heroku addons:create heroku-postgresql:hobby-dev
+heroku addons:create heroku-postgresql:mini
 git add .
 git commit -m "todo app deploy"
 git push heroku master
-heroku ps:scale web=1:hobby
+heroku ps:scale web=1:eco
 heroku apps:open
-
 ```
-
 
 
 
