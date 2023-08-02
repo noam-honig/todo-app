@@ -56,7 +56,8 @@ input {
   padding: 0.25em;
 }
 
-input:checked + input {
+input:checked + input,
+input:checked + span {
   text-decoration: line-through;
 }
 
