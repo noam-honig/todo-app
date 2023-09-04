@@ -32,6 +32,19 @@ export default function App() {
     }
   }
 
+  async function setCompleted(task: Task, completed: boolean) {
+    const updatedTask = { ...task, completed }
+    setTasks((tasks) => tasks.map((t) => (t === task ? updatedTask : t)))
+  }
+
+  async function deleteTask(task: Task) {
+    try {
+      setTasks(tasks.filter((t) => t !== task))
+    } catch (error: any) {
+      alert(error.message)
+    }
+  }
+
   async function setAllCompleted(completed: boolean) {
     setTasks(tasks.map((task) => ({ ...task, completed })))
   }
@@ -46,31 +59,17 @@ export default function App() {
         />
         <button>Add</button>
       </form>
-      {tasks.map((task) => {
-        async function setCompleted(completed: boolean) {
-          const updatedTask = { ...task, completed }
-          setTasks((tasks) => tasks.map((t) => (t === task ? updatedTask : t)))
-        }
-        async function deleteTask() {
-          try {
-            setTasks(tasks.filter((t) => t !== task))
-          } catch (error: any) {
-            alert(error.message)
-          }
-        }
-
-        return (
-          <div key={task.id}>
-            <input
-              type="checkbox"
-              checked={task.completed}
-              onChange={(e) => setCompleted(e.target.checked)}
-            />
-            <span>{task.title}</span>
-            <button onClick={deleteTask}>x</button>
-          </div>
-        )
-      })}
+      {tasks.map((task) => (
+        <div key={task.id}>
+          <input
+            type="checkbox"
+            checked={task.completed}
+            onChange={(e) => setCompleted(task, e.target.checked)}
+          />
+          <span>{task.title}</span>
+          <button onClick={() => deleteTask(task)}>x</button>
+        </div>
+      ))}
       <footer>
         <button onClick={() => setAllCompleted(true)}>Set all completed</button>
         <button onClick={() => setAllCompleted(false)}>
