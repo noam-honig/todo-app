@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react'
-import { Task } from './Task'
+import { Task } from '../model/Task'
 
 export default function App() {
   const [tasks, setTasks] = useState<Task[]>([
