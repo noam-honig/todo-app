@@ -2,6 +2,7 @@
   "name": "todo",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && tsc -p tsconfig.server.json",
@@ -29,6 +30,6 @@
     "@types/swagger-ui-express": "^4.1.3",
     "typescript": "^5.1.3",
     "vite": "^5.0.12",
-    "vite3-plugin-express": "^0.1.3"
+    "vite3-plugin-express": "^0.1.5"
   }
 }

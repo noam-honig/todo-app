@@ -1,15 +1,12 @@
 {
-   "extends": "./tsconfig.json",
-   "compilerOptions": {
-      "module": "commonjs",
-      "experimentalDecorators": true,
-      "esModuleInterop": true,
-      "preserveValueImports": false,
-      "noEmit": false,
-      "outDir": "dist",
-      "rootDir": "src"
-   },
-   "include": [
-      "src/backend/index.ts"
-   ]
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "preserveValueImports": false,
+    "noEmit": false,
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src/backend/index.ts"]
 }
